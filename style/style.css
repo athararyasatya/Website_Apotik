@@ -14,6 +14,13 @@ body {
 }
 
 
+.bluee{
+    color:  #1e3a8a; ;
+}
+
+.darkk{
+   color: #334;
+}
 /* Animasi Dtart */
 @keyframes fadeInDown {
   from {
@@ -231,6 +238,167 @@ body {
   flex-direction: column-reverse;
 }
 
+.product-promos .image-wrapper {
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  position: relative;
+}
+
+.product-promos .image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.4s ease-in-out;
+}
+
+/* Zoom saat hover */
+.product-promos .card:hover .image-wrapper img {
+  transform: scale(1.08);
+}
+
+
+/* produk populer */
+/* Sembunyikan scrollbar default */
+#productList {
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  display: flex;
+  gap: 0.75rem;
+  scroll-behavior: smooth;
+   scrollbar-color: #1e3a8a #f1f1f1;
+  transition: scrollbar-color 0.3s ease;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+  
+}
+
+#productList::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+/* Saat scroll aktif, munculkan scrollbar custom */
+#productList.show-scrollbar {
+  scrollbar-width: thin; /* Firefox */
+}
+
+/* WebKit scrollbar custom (Chrome, Safari, Edge) */
+#productList.show-scrollbar::-webkit-scrollbar {
+  height: 8px;
+}
+
+#productList.show-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #0b1b34; /* Pakai langsung hex dulu, bukan var */
+  border-radius: 10px;
+}
+
+#productList.show-scrollbar::-webkit-scrollbar-track {
+  background-color: #e5e7eb;
+  border-radius: 10px;
+}
+
+
+
+#productList::-webkit-scrollbar-thumb {
+  transition: background-color 0.3s ease;
+}
+
+.custom-btn {
+background-color: var(--primary-blue);
+color: white;
+transition: all 0.3s ease;
+}
+
+.custom-btn:hover,
+.custom-btn:active {
+background-color: #172554;; /* warna saat hover/click */
+color: #fff;
+}
+
+.custom-btn i {
+transition: transform 0.3s ease;
+}
+
+.custom-btn:hover i {
+transform: scale(1.1);
+}
+
+.card-img-top {
+object-fit: contain;
+height: 150px;
+}
+
+.badge {
+font-size: 0.7rem;
+padding: 0.4em 0.6em;
+border-radius: 0.5rem;
+}
+
+
+#productList::-webkit-scrollbar {
+  display: none;
+}
+
+.card-img-top {
+  object-fit: contain;
+  height: 150px;
+}
+
+.card-body {
+  flex-grow: 1;
+}
+
+.card-footer {
+  margin-top: auto;
+}
+
+.card-body hr {
+  border: none;
+  border-top: 3px solid #aaa; /* warna bisa disesuaikan */
+  margin: 0.5rem 0;
+  height: 1px; /* pastikan ada height */
+}
+
+.custom-btn {
+  background-color: var(--primary-blue);
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.custom-btn:hover,
+.custom-btn:active {
+  background-color: #172554;
+  color: #fff;
+}
+
+.custom-btn i {
+  transition: transform 0.3s ease;
+}
+
+.custom-btn:hover i {
+  transform: scale(1.1);
+}
+
+/* Efek transisi umum */
+.card-img-top {
+  object-fit: contain;
+  height: 150px;
+  transition: transform 0.3s ease; /* penting untuk animasi halus */
+}
+
+/* Saat hover pada card, gambar diperbesar */
+.card:hover .card-img-top {
+  transform: scale(1.05);
+}
+
+/* Saat ditekan (klik), sedikit dikecilkan kembali untuk efek interaksi */
+.card:active .card-img-top {
+  transform: scale(0.97);
+}
+
+
 @media (max-width: 768px) {
   /* Navbar Links Mobile */
   .navbar-nav {
@@ -281,10 +449,61 @@ body {
     gap: 1rem;
   }
 
-  .delivery-banner {
-    font-size: 0.75rem;
-    line-height: 1.3;
+ .product-promos .image-wrapper {
+    height: 160px;
   }
+
+  .product-promos h6 {
+    font-size: 0.9rem;
+  }
+
+  .product-promos .card-body {
+    padding: 0.75rem;
+  }
+
+    .card-title {
+    font-size: 0.9rem;
+    }
+
+    .text-muted.small {
+    font-size: 0.75rem;
+    }
+  /* card produk populer */
+
+   .card-body .my-2 hr {
+    border-top: 8px solid #1e3a8a;
+  }
+
+  .card-body {
+    padding-bottom: 0.5rem;
+  }
+
+  .card-footer {
+    padding-top: 0.5rem;
+  }
+
+  .text-danger.fw-bold {
+    font-size: 1rem;
+  }
+
+    #productList {
+    flex-wrap: nowrap;
+  }
+
+  #productList .col-10 {
+    flex: 0 0 80%;
+    max-width: 70%;
+  }
+
+    .custom-btn {
+    font-size: 0.69rem;
+    padding: 0.2rem 0.5rem;
+  }
+
+
+  
+
+  
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
@@ -318,4 +537,34 @@ body {
   .hero-section .d-flex {
     gap: 2rem !important;
   }
+  .card-body .my-2 hr {
+    border-top: 8px solid #1e3a8a;
+  }
+
+  .card-body {
+    padding-bottom: 0.5rem;
+  }
+
+  .card-footer {
+    padding-top: 0.5rem;
+  }
+
+  .text-danger.fw-bold {
+    font-size: 1rem;
+  }
+
+    #productList {
+    flex-wrap: nowrap;
+  }
+
+  #productList .col-10 {
+    flex: 0 0 80%;
+    max-width: 58%;
+  }
+
+    .custom-btn {
+    font-size: 0.90rem;
+    padding: 0.2rem 0.5rem;
+  }
+
 }
