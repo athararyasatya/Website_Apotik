@@ -31,3 +31,41 @@ document.addEventListener("DOMContentLoaded", function () {
     const slider = document.getElementById("hero-slider");
     slider.style.transform = `translateX(-${index * 100}%)`;
   }
+
+
+    const cartSidebar = document.getElementById('cartSidebar');
+  cartSidebar.addEventListener('shown.bs.offcanvas', function () {
+    document.body.style.overflow = 'auto'; // biar tetap bisa scroll
+  });
+
+
+  const heroUtama = document.getElementById("heroUtamaContent");
+  const layananKami = document.getElementById("layananKamiContent");
+  const heroImage = document.getElementById("heroImage");
+  const btnLayananKami = document.getElementById("btnLayananKami");
+  const btnKembali = document.getElementById("btnKembali");
+
+  function slideTo(target, from, direction, newImage) {
+    from.classList.remove("active");
+    from.classList.add(direction === "left" ? "exit-left" : "exit-right");
+
+    setTimeout(() => {
+      from.classList.remove("exit-left", "exit-right");
+      target.classList.add("active");
+      heroImage.src = newImage;
+    }, 600);
+  }
+
+  btnLayananKami.addEventListener("click", function (e) {
+    e.preventDefault();
+    slideTo(layananKami, heroUtama, "left", "assets/docter2.png");
+  });
+
+  btnKembali.addEventListener("click", function (e) {
+    e.preventDefault();
+    slideTo(heroUtama, layananKami, "right", "assets/docter.png");
+  });
+
+
+  
+

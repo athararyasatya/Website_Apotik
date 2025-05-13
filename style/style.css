@@ -479,6 +479,23 @@ border-radius: 0.5rem;
 
 }
 
+.owsit-btn {
+  background-color: var(--primary-blue);
+  color: var(--light-blue);
+  border: none;
+  transition: transform 0.1s ease, background-color 0.3s ease;
+}
+
+/* Hover effect */
+.owsit-btn:hover {
+  transform: scale(0.97);
+  background-color: #2c50b8; 
+  color: white !important;
+
+}
+
+
+
 /* Responsif khusus mobile agar 2 kolom tetap enak dilihat */
 @media (max-width: 576px) {
   .card-obat {
