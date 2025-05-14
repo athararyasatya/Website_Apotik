@@ -137,6 +137,27 @@ document.querySelectorAll('.cart-icon-populer').forEach(button => {
   });
 });
 
+// Toggle summary sesuai tab aktif
+const summaryTanpa = document.getElementById('summaryTanpaResep');
+const summaryPerlu = document.getElementById('summaryPerluResep');
+
+const cartTabEl = document.querySelector('#cartTab');
+if (cartTabEl) {
+  cartTabEl.addEventListener('click', function (e) {
+    const targetId = e.target.getAttribute('data-bs-target');
+    if (!targetId) return;
+
+    if (targetId === '#tanpaResep') {
+      summaryTanpa.classList.remove('d-none');
+      summaryPerlu.classList.add('d-none');
+    } else if (targetId === '#perluResep') {
+      summaryTanpa.classList.add('d-none');
+      summaryPerlu.classList.remove('d-none');
+    }
+  });
+}
+
+
 // Badge jumlah item
 function updateCartBadge() {
   const totalQty = cartItems.tanpa.reduce((total, item) => total + item.qty, 0);

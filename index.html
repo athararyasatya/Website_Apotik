@@ -132,8 +132,6 @@
 <!-- END MODEL CART -->
 
 
-
-
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light py-2">
     <div class="container">
@@ -185,77 +183,76 @@
 </nav>
 <!-- End Navbar -->
 
-<!-- Hero Section -->
 <section class="hero-section py-5">
   <div class="container">
-    <div class="card p-4 shadow-lg rounded-4">
-      <div class="d-flex flex-column-reverse flex-md-row align-items-center justify-content-between gap-5">
+    <div class="card p-4 shadow-lg rounded-4 overflow-hidden">
 
-        <!-- Text Area -->
-        <div class="text-area" style="max-width: 700px;">
-          <h1 class="display-5 fw-bolder">
-            Jaga Kesehatan<br>
-            Dengan Obat <span class="text-primary">Terbaik Dan Tepat</span>
-          </h1>
-          <p class="lead text-muted fw-semibold">
-            Nikmati layanan penjualan obat kami dengan sistem diantar ke rumah dengan aman
-          </p>
-          <div class="mt-4 d-flex gap-3 flex-wrap">
-            <a href="#" class="btn btn-success btn-lg">
-              <i class="bi bi-cart-plus"></i> Belanja sekarang !
-            </a>
-            <a href="#" class="btn btn-outline-light btn-lg">
-              Cek layanan →
-            </a>
+      <div id="heroCarousel" class="carousel slide" data-bs-interval="false">
+        <div class="carousel-inner">
+
+          <div class="carousel-item active">
+            <div class="d-flex flex-column-reverse flex-md-row align-items-center justify-content-between gap-5">
+              <div class="text-area" style="max-width: 700px;">
+                <h1 class="display-5 fw-bolder">
+                  Jaga Kesehatan<br>
+                  Dengan Obat <span class="text-primary">Terbaik Dan Tepat</span>
+                </h1>
+                <p class="lead text-muted fw-semibold">
+                  Nikmati layanan penjualan obat kami dengan sistem diantar ke rumah dengan aman
+                </p>
+                <div class="mt-4 d-flex gap-3 flex-wrap">
+                  <a href="#" class="btn btn-success btn-lg">
+                    <i class="bi bi-cart-plus"></i> Belanja sekarang !
+                  </a>
+                  <button class="btn btn-outline-light btn-lg" data-bs-target="#heroCarousel" data-bs-slide="next">
+                    Cek layanan →
+                  </button>
+                </div>
+              </div>
+
+              <div class="image-wrapper mt-4 mt-md-0 ms-md-4 d-flex justify-content-end align-items-end">
+                <img src="assets/docter.png" alt="Doctor" class="hero-image" />
+              </div>
+            </div>
           </div>
-        </div>
 
-        <!-- Hero Image -->
-        <div class="image-wrapper mt-4 mt-md-0 ms-md-4 d-flex justify-content-end align-items-end">
-          <img src="assets/docter.png" alt="Doctor" class="hero-image" />
-        </div>
+          <div class="carousel-item">
+            <div class="d-flex flex-column-reverse flex-md-row align-items-center justify-content-between gap-5">
+              <div class="text-area" style="max-width: 700px;">
+                <h1 class="display-5 fw-bolder">
+                  Layanan <span class="text-info">Unggulan</span> Kami
+                </h1>
+                <p class="lead text-muted fw-semibold">
+                  Dapatkan berbagai layanan kesehatan terbaik kami, mulai dari konsultasi hingga pengiriman obat cepat.
+                </p>
+                <ul class="list-unstyled mt-4">
+                  <li><i class="bi bi-check-circle-fill text-success me-2"></i>Konsultasi Dokter Online</li>
+                  <li><i class="bi bi-check-circle-fill text-success me-2"></i>Pemesanan Obat Mudah</li>
+                  <li><i class="bi bi-check-circle-fill text-success me-2"></i>Pengiriman Cepat & Aman</li>
+                  <li><i class="bi bi-check-circle-fill text-success me-2"></i>Layanan 24/7</li>
+                </ul>
+                <div class="mt-4 d-flex gap-3 flex-wrap">
+                  <a href="#" class="btn btn-info btn-lg">
+                    <i class="bi bi-info-circle"></i> Pelajari Lebih Lanjut
+                  </a>
+                  <button class="btn btn-outline-light btn-lg" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                    ← Kembali
+                  </button>
+                </div>
+              </div>
 
+              <div class="image-wrapper mt-4 mt-md-0 ms-md-4 d-flex justify-content-end align-items-end">
+                <img src="assets/dok.png" alt="Layanan" class="hero-image" />
+              </div>
+            </div>
+          </div>
+
+        </div>
       </div>
+
     </div>
   </div>
 </section>
-<!-- End Hero section -->
-
-<!-- Hero Section Baru (Layanan Kami) -->
-<section id="layananKamiSection" class="hero-section py-5 d-none">
-  <div class="container">
-    <div class="card p-4 shadow-lg rounded-4">
-      <div class="d-flex flex-column-reverse flex-md-row align-items-center justify-content-between gap-5">
-
-        <!-- Text Area -->
-        <div class="text-area" style="max-width: 700px;">
-          <h1 class="display-5 fw-bolder">
-            Jaga Kesehatan<br>
-            Dengan Obat <span class="text-primary">Terbaik Dan Tepat</span>
-          </h1>
-          <p class="lead text-muted fw-semibold">
-            Nikmati layanan penjualan obat kami dengan sistem diantar ke rumah dengan aman
-          </p>
-          <div class="mt-4 d-flex gap-3 flex-wrap">
-            <a href="#" class="btn btn-success btn-lg">
-              <i class="bi bi-cart-plus"></i> Belanja sekarang !
-            </a>
-            <a href="#" class="btn btn-outline-light btn-lg">
-              Produk populer →
-            </a>
-          </div>
-        </div>
-
-        <!-- Hero Image -->
-        <div class="image-wrapper mt-4 mt-md-0 ms-md-4 d-flex justify-content-end align-items-end">
-          <img src="assets/docter2.png" alt="Doctor" class="hero-image" />
-        </div>
-
-      </div>
-    </div>
-  </div>
-</section>
-
 
 
 <!-- Info Top Section -->
@@ -658,5 +655,6 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="js/script.js"></script>
     <script src="js/cart.js"></script>
+    
 </body>
 </html>

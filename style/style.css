@@ -1,105 +1,31 @@
+
 /* Font */
 body {
   font-family: 'Montserrat', sans-serif;
   background-color: #f8f9fa;
   color: #333;
-  
-
 }
 
 /* Color Variables */
 :root {
-  --primary-blue: #1e3a8a;  /* Biru tua */
+  --primary-blue: #1e3a8a; /* Biru tua */
   --light-blue: #eff6ff;
   --hero-bg: #f0f8ff;
   --dark-bg: #334;
 }
 
-
-
-.bluee{
-    color:  #1e3a8a; ;
+.bluee {
+  color: #1e3a8a;
 }
 
-.darkk{
-   color: #334;
+.darkk {
+  color: #334;
 }
-
-
-/* Animasi start */
-@keyframes fadeInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes fadeInRight {
-  from {
-    opacity: 0;
-    transform: translateX(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-/* Animasi endd */
-
-/* Top Bar Animation (dari atas) */
-.top-bar {
-  opacity: 0;
-  animation: fadeInDown 0.8s ease-out forwards;
-  animation-delay: 0.1s;
-  
-}
-
 
 /* Top Bar */
 .top-bar {
   background-color: var(--primary-blue) !important;
   color: white;
-  
 }
 
 .top-bar .navbar-brand {
@@ -112,8 +38,6 @@ body {
   text-decoration: none;
   font-weight: 500;
 }
-
-
 
 /* Navbar */
 .navbar {
@@ -129,51 +53,6 @@ body {
 
 .navbar-nav .nav-link:hover {
   color: #334 !important;
-}
-/* Navbar Animation (dari bawah) */
-.navbar {
-  opacity: 0;
-  animation: fadeInUp 0.8s ease-out forwards;
-  animation-delay: 0.4s;
-}
-
-/* Animasi Card */
-.hero-section .card {
-  animation: fadeInUp 0.8s ease-in-out forwards;
-}
-
-
-
-
-  #hero-slider {
-    display: flex;
-    width: 200%;
-    transition: transform 0.6s ease;
-  }
-
-  .hero-content {
-    width: 100%;
-    flex-shrink: 0;
-  }
-/* Animasi Teks Deskripsi */
-.hero-section .text-area {
-  opacity: 0;
-  animation: fadeInLeft 0.8s ease-out forwards;
-  animation-delay: 0.3s;
-}
-
-/* Animasi Gambar */
-.hero-image {
-  opacity: 0;
-  animation: fadeInRight 0.8s ease-out forwards;
-  animation-delay: 0.5s;
-}
-
-/* Tombol */
-.hero-section .text-area .btn {
-  opacity: 0;
-  animation: fadeInLeft 0.8s ease-out forwards;
-  animation-delay: 0.6s;
 }
 
 /* Hero Section */
@@ -196,6 +75,11 @@ body {
 .hero-card h1,
 .hero-card p {
   color: #3334;
+}
+
+/* Kalau pakai carousel-fade */
+.carousel.carousel-fade .carousel-item {
+  transition: opacity 1.2s ease-in-out;
 }
 
 /* Hero Image */
@@ -247,19 +131,18 @@ body {
 .wa-banner-desktop {
   margin-left: auto;
 }
-  /* Hilangkan border tombol hamburger */
+
+/* Hilangkan border tombol hamburger */
 .navbar-toggler {
   border: none !important;
   box-shadow: none !important;
 }
-
 
 .text-area h1 span {
   color: #0d6efd; /* atau warna khusus jika ingin berbeda */
   font-style: italic;
   font-weight: 900; /* lebih tebal dari default */
 }
-
 
 .product-promos .image-wrapper {
   width: 100%;
@@ -282,7 +165,6 @@ body {
   transform: scale(1.08);
 }
 
-
 /* produk populer */
 /* Sembunyikan scrollbar default */
 #productList {
@@ -291,11 +173,10 @@ body {
   display: flex;
   gap: 0.75rem;
   scroll-behavior: smooth;
-   scrollbar-color: #1e3a8a #f1f1f1;
+  scrollbar-color: #1e3a8a #f1f1f1;
   transition: scrollbar-color 0.3s ease;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE 10+ */
-  
 }
 
 #productList::-webkit-scrollbar {
@@ -322,43 +203,40 @@ body {
   border-radius: 10px;
 }
 
-
-
 #productList::-webkit-scrollbar-thumb {
   transition: background-color 0.3s ease;
 }
 
 .custom-btn {
-background-color: var(--primary-blue);
-color: white;
-transition: all 0.3s ease;
+  background-color: var(--primary-blue);
+  color: white;
+  transition: all 0.3s ease;
 }
 
 .custom-btn:hover,
 .custom-btn:active {
-background-color: #172554;; /* warna saat hover/click */
-color: #fff;
+  background-color: #172554; /* warna saat hover/click */
+  color: #fff;
 }
 
 .custom-btn i {
-transition: transform 0.3s ease;
+  transition: transform 0.3s ease;
 }
 
 .custom-btn:hover i {
-transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 .card-img-top {
-object-fit: contain;
-height: 150px;
+  object-fit: contain;
+  height: 150px;
 }
 
 .badge {
-font-size: 0.7rem;
-padding: 0.4em 0.6em;
-border-radius: 0.5rem;
+  font-size: 0.7rem;
+  padding: 0.4em 0.6em;
+  border-radius: 0.5rem;
 }
-
 
 #productList::-webkit-scrollbar {
   display: none;
@@ -421,11 +299,11 @@ border-radius: 0.5rem;
   transform: scale(0.97);
 }
 
-
 .mt-7 {
   margin-top: 5rem !important;
 }
-.img-hover-container img{
+
+.img-hover-container img {
   border-radius: 20px;
 }
 
@@ -445,16 +323,13 @@ border-radius: 0.5rem;
   padding: 1rem;
   transition: transform 0.3s ease;
   background-color: #fff;
-
 }
 
 .card-obat .card-img-top {
-  
   object-fit: contain;
   padding: 1rem; /* opsional: biar ada ruang di sekeliling gambar */
   border-radius: 12px; /* biar tetap rounded */
 }
-
 
 .img-hover-container:hover .card-img-top {
   transform: scale(1.05);
@@ -465,7 +340,7 @@ border-radius: 0.5rem;
   height: 36px;
   font-size: 1.1rem;
   cursor: pointer;
- background-color: var(--primary-blue);
+  background-color: var(--primary-blue);
   color: var(--hero-bg);
 }
 
@@ -473,10 +348,8 @@ border-radius: 0.5rem;
   color: var(--dark-bg);
 }
 
-.list-group-item i{
-
+.list-group-item i {
   color: var(--primary-blue);
-
 }
 
 .owsit-btn {
@@ -489,12 +362,42 @@ border-radius: 0.5rem;
 /* Hover effect */
 .owsit-btn:hover {
   transform: scale(0.97);
-  background-color: #2c50b8; 
+  background-color: #2c50b8;
   color: white !important;
-
 }
 
+  .step-number .rounded-circle {
+    width: 28px;
+    height: 28px;
+    font-size: 0.75rem;
+  }
 
+  .step-item-icon {
+    font-size: 1rem; /* lebih kecil untuk ikon */
+  }
+
+  .step-text {
+    font-size: 0.85rem; /* kecilkan teks agar muat 2 kolom */
+  }
+
+  @media (max-width: 576px) {
+    .step-text {
+      font-size: 0.8rem;
+    }
+    .step-number .rounded-circle {
+      width: 24px;
+      height: 24px;
+      font-size: 0.7rem;
+    }
+    .step-item-icon {
+      font-size: 0.9rem;
+    }
+  }
+
+
+.carousel-item {
+  transition: transform 1s ease;  /* Atur kecepatan transisi, misalnya 0.6s */
+}
 
 /* Responsif khusus mobile agar 2 kolom tetap enak dilihat */
 @media (max-width: 576px) {
@@ -506,29 +409,29 @@ border-radius: 0.5rem;
   }
 }
 
-
-
 @media (max-width: 768px) {
+  
   /* Navbar Links Mobile */
   .navbar-nav {
     flex-direction: column;
     align-items: flex-start;
   }
 
-    /* Delivery Banner mobile style */
-   .wa-banner-mobile {
+  /* Delivery Banner mobile style */
+  .wa-banner-mobile {
     background-color: var(--primary-blue) !important;
     font-size: 0.8rem;
     padding: 0.3rem 0.6rem;
     border-radius: 0.5rem;
     margin-bottom: 0 !important;
   }
+  
 
   .hero-card {
-    padding: 0,5rem 1rem;
+    padding: 0.5rem 1rem;
   }
 
-    .hero-section .card > .d-flex {
+  .hero-section .card > .d-flex {
     flex-direction: row;
   }
 
@@ -539,7 +442,7 @@ border-radius: 0.5rem;
     display: block;
   }
 
-  .hero-section p{
+  .hero-section p {
     font-size: 0.80rem;
   }
 
@@ -558,7 +461,7 @@ border-radius: 0.5rem;
     gap: 1rem;
   }
 
- .product-promos .image-wrapper {
+  .product-promos .image-wrapper {
     height: 160px;
   }
 
@@ -570,16 +473,16 @@ border-radius: 0.5rem;
     padding: 0.75rem;
   }
 
-    .card-title {
+  .card-title {
     font-size: 0.9rem;
-    }
+  }
 
-    .text-muted.small {
+  .text-muted.small {
     font-size: 0.75rem;
-    }
+  }
   /* card produk populer */
 
-   .card-body .my-2 hr {
+  .card-body .my-2 hr {
     border-top: 8px solid #1e3a8a;
   }
 
@@ -595,7 +498,7 @@ border-radius: 0.5rem;
     font-size: 1rem;
   }
 
-    #productList {
+  #productList {
     flex-wrap: nowrap;
   }
 
@@ -604,23 +507,17 @@ border-radius: 0.5rem;
     max-width: 70%;
   }
 
-    .custom-btn {
+  .custom-btn {
     font-size: 0.69rem;
     padding: 0.2rem 0.5rem;
   }
-
-
-  
-
-  
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
-
-   .wa-banner-mobile {
+  .wa-banner-mobile {
     font-size: 0.9rem;
     background-color: var(--primary-blue) !important;
-   }
+  }
   /* Hero Section khusus tablet */
   .hero-section .card {
     padding: 2rem 2rem;
@@ -662,7 +559,7 @@ border-radius: 0.5rem;
     font-size: 1rem;
   }
 
-    #productList {
+  #productList {
     flex-wrap: nowrap;
   }
 
@@ -671,9 +568,8 @@ border-radius: 0.5rem;
     max-width: 58%;
   }
 
-    .custom-btn {
+  .custom-btn {
     font-size: 0.90rem;
     padding: 0.2rem 0.5rem;
   }
-
 }
