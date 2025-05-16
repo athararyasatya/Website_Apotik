@@ -66,3 +66,5 @@ cartSidebar.addEventListener('shown.bs.offcanvas', function () {
 //   e.preventDefault();
 //   slideTo(heroUtama, layananKami, "right", "assets/docter.png");
 // });
+
+

@@ -24,10 +24,11 @@
         </a>
 
         <!-- Akun -->
-        <a href="#" class="me-3 text-dark text-decoration-none">
-          <i class="bi bi-person"></i>
-          <span class="d-none d-md-inline">Akun kamu</span>
-        </a>
+<a href="#" data-bs-toggle="modal" data-bs-target="#modalLogin" class="me-3 text-dark text-decoration-none">
+  <i class="bi bi-person"></i>
+  <span class="d-none d-md-inline">Akun kamu</span>
+</a>
+
 
         <!-- Keranjang -->
         <a href="#" class="text-dark text-decoration-none position-relative"
@@ -44,6 +45,138 @@
       </div>
     </div>
   </div>
+
+
+  <!-- Modal Profil (Read-Only) -->
+<div class="modal fade" id="modalProfil" tabindex="-1" aria-labelledby="modalProfilLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content rounded-4 shadow">
+      <div class="modal-header border-0">
+        <h5 class="modal-title fw-bold" id="modalProfilLabel">Profil Kamu</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+      </div>
+      <div class="modal-body pt-0">
+
+        <!-- Avatar -->
+        <div class="text-center mb-4">
+          <img src="assets/user.png" class="rounded-circle shadow" width="100" height="100" alt="Avatar">
+          <h6 class="mt-2 fw-bold" id="profilNama">Melody Marks</h6>
+        </div>
+
+        <!-- Data Diri -->
+        <ul class="list-group list-group-flush small">
+          <li class="list-group-item d-flex justify-content-between">
+            <span>Email</span>
+            <span id="profilEmail" class="fw-semibold text-end">melodymarks@gmail.com</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between">
+            <span>Tanggal Lahir</span>
+            <span id="profilTanggalLahir" class="fw-semibold text-end">2003-12-01</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between">
+            <span>Jenis Kelamin</span>
+            <span id="profilGender" class="fw-semibold text-end">Perempuan</span>
+          </li>
+        </ul>
+
+        <!-- Tombol Logout -->
+        <div class="mt-4 text-center">
+          <button class="btn btn-outline-danger rounded-pill w-100" id="btnLogout">Keluar Akun</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal Login -->
+<div class="modal fade" id="modalLogin" tabindex="-1" aria-labelledby="modalLoginLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content p-4 rounded-4 shadow-lg border-0">
+      <div class="modal-header border-0 pb-0">
+        <h5 class="modal-title fw-bold" id="modalLoginLabel">Masuk ke Akunmu</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+      </div>
+      <div class="modal-body pt-2">
+        <form id="loginForm">
+          <div class="mb-3">
+            <label for="emailLogin" class="form-label">Email</label>
+            <input type="email" class="form-control rounded-3" id="emailLogin" placeholder="contoh@email.com">
+          </div>
+          <div class="mb-3">
+            <label for="passwordLogin" class="form-label">Kata Sandi</label>
+            <input type="password" class="form-control rounded-3" id="passwordLogin" placeholder="••••••••">
+          </div>
+         <button type="submit" class="btn btn-primary w-100 rounded-pill">Login</button>
+        </form>
+
+        <!-- Alert Daftar -->
+      <div class="alert alert-light border mt-4 mb-0 text-center small rounded-3" role="alert">
+        Belum punya akun? 
+        <a href="#" class="text-decoration-none fw-semibold" id="btnToRegister">Daftar di sini ya</a>
+      </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Register -->
+<!-- Modal Register -->
+<div class="modal fade" id="modalRegister" tabindex="-1" aria-labelledby="modalRegisterLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content rounded-4 shadow">
+      <div class="modal-header border-0">
+        <h5 class="modal-title fw-bold" id="modalRegisterLabel">Daftar Akun Baru</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+      </div>
+      <div class="modal-body pt-0">
+        <form>
+          <div class="mb-3">
+            <label for="registerName" class="form-label">Nama Lengkap</label>
+            <input type="text" class="form-control" id="registerName" placeholder="Masukkan nama lengkap">
+          </div>
+
+          <div class="mb-3">
+            <label for="registerEmail" class="form-label">Email</label>
+            <input type="email" class="form-control" id="registerEmail" placeholder="Masukkan email aktif">
+          </div>
+
+          <div class="mb-3">
+            <label for="registerPassword" class="form-label">Password</label>
+            <input type="password" class="form-control" id="registerPassword" placeholder="Buat password">
+          </div>
+
+          <div class="mb-3">
+            <label for="registerTanggalLahir" class="form-label">Tanggal Lahir</label>
+            <input type="date" class="form-control" id="registerTanggalLahir">
+          </div>
+
+          <div class="mb-4">
+            <label for="registerGender" class="form-label">Jenis Kelamin</label>
+            <select class="form-select" id="registerGender">
+              <option value="" disabled selected>Pilih jenis kelamin</option>
+              <option value="Laki-laki">Laki-laki</option>
+              <option value="Perempuan">Perempuan</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn btn-success w-100 rounded-pill">Daftar Sekarang</button>
+        </form>
+
+        <!-- Alert Masuk -->
+        <div class="alert alert-light border mt-4 mb-0 text-center small rounded-3" role="alert">
+          Sudah punya akun? 
+          <a href="#" class="text-decoration-none fw-semibold" id="btnToLogin">Masuk di sini</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 
   <!-- INI MODAL CART PRODUCT YA KI -->
   <!-- OFFCANVAS SIDEBAR: HANYA UNTUK TANPA RESEP -->
@@ -759,12 +892,15 @@
   </div>
 </section>
 
+
+
+
 <footer class="py-4 mt-5" style="background-color: #1e3a8a;">
   <div class="container text-white">
     <div class="row align-items-start">
       <!-- Logo dan navigasi kategori -->
       <div class="col-lg-8 mb-4 mb-lg-0">
-        <h5 class="fw-bold">Untitled UI</h5>
+        <h5 class="fw-bold">Apotiku</h5>
       <ul class="navbar-nav flex-row flex-wrap mt-2 kategori-navbar">
         <li class="nav-item me-3"><a class="text-decoration-none text-white-50" href="#" data-kategori="Obat Demam">Obat Demam</a></li>
         <li class="nav-item me-3"><a class="text-decoration-none text-white-50" href="#" data-kategori="Obat Flu">Obat Flu</a></li>

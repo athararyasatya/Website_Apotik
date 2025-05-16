@@ -178,3 +178,60 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   updateCartTotal();
 });
+
+
+// Buat modal login dan register
+ document.addEventListener('DOMContentLoaded', function () {
+    const btnToRegister = document.getElementById('btnToRegister');
+    const btnToLogin = document.getElementById('btnToLogin');
+    const loginForm = document.getElementById('loginForm');
+
+    // Navigasi dari Login ke Register
+    if (btnToRegister) {
+      btnToRegister.addEventListener('click', function (e) {
+        e.preventDefault();
+        const loginModal = bootstrap.Modal.getInstance(document.getElementById('modalLogin'));
+        loginModal.hide();
+        new bootstrap.Modal(document.getElementById('modalRegister')).show();
+      });
+    }
+
+    // Navigasi dari Register ke Login
+    if (btnToLogin) {
+      btnToLogin.addEventListener('click', function (e) {
+        e.preventDefault();
+        const registerModal = bootstrap.Modal.getInstance(document.getElementById('modalRegister'));
+        registerModal.hide();
+        new bootstrap.Modal(document.getElementById('modalLogin')).show();
+      });
+    }
+
+    // Login form validation and redirect to profile
+    if (loginForm) {
+      loginForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const email = loginForm.querySelector('input[type="email"]').value;
+        const password = loginForm.querySelector('input[type="password"]').value;
+
+        // Validasi sederhana
+        if (!email.includes('@')) {
+          alert("Email harus valid dan mengandung '@'");
+          return;
+        }
+
+        if (password.trim() === "") {
+          alert("Password wajib diisi");
+          return;
+        }
+
+        // Tutup modal login
+        const loginModal = bootstrap.Modal.getInstance(document.getElementById('modalLogin'));
+        loginModal.hide();
+
+        // Tampilkan modal profil
+        const modalProfil = new bootstrap.Modal(document.getElementById('modalProfil'));
+        modalProfil.show();
+      });
+    }
+  });
