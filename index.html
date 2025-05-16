@@ -11,125 +11,159 @@
 </head>
 <body>
 
-<!-- Top Bar -->
-<div class="top-bar bg-white py-2 shadow-sm sticky-top" style="top: 0;" >
-  <div class="container d-flex justify-content-between align-items-center">
-    <a class="navbar-brand fw-bold text-white fs-4" href="#">Apotiku</a>
+  <!-- Top Bar -->
+  <div class="top-bar bg-white py-2 shadow-sm sticky-top" style="top: 0;" >
+    <div class="container d-flex justify-content-between align-items-center">
+      <a class="navbar-brand fw-bold text-white fs-4" href="#">Apotiku</a>
 
-    <div>
-           <!-- Histori -->
-      <a href="#" class="me-3 text-dark text-decoration-none">
-        <i class="bi bi-clock-history"></i>
-        <span class="d-none d-md-inline">Histori</span>
-      </a>
+      <div>
+            <!-- Histori -->
+        <a href="#" class="me-3 text-dark text-decoration-none">
+          <i class="bi bi-clock-history"></i>
+          <span class="d-none d-md-inline">Histori</span>
+        </a>
 
-      <!-- Akun -->
-      <a href="#" class="me-3 text-dark text-decoration-none">
-        <i class="bi bi-person"></i>
-        <span class="d-none d-md-inline">Akun kamu</span>
-      </a>
+        <!-- Akun -->
+        <a href="#" class="me-3 text-dark text-decoration-none">
+          <i class="bi bi-person"></i>
+          <span class="d-none d-md-inline">Akun kamu</span>
+        </a>
 
-      <!-- Keranjang -->
-      <a href="#" class="text-dark text-decoration-none position-relative"
-        data-bs-toggle="offcanvas" data-bs-target="#cartSidebar">
-        <i class="bi bi-cart fs-5"></i>
-        <span id="cart-badge"
-              class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
-              style="display: none; font-size: 0.6rem;">
-          0
-        </span>
-        <span class="d-none d-md-inline">Keranjang kamu</span>
-      </a>
+        <!-- Keranjang -->
+        <a href="#" class="text-dark text-decoration-none position-relative"
+          data-bs-toggle="offcanvas"  data-bs-target="#cartSidebarTanpaResep">
+          <i class="bi bi-cart fs-5"></i>
+          <span id="cart-badge"
+                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                style="display: none; font-size: 0.6rem;">
+            0
+          </span>
+          <span class="d-none d-md-inline">Keranjang kamu</span>
+        </a>
 
+      </div>
     </div>
   </div>
-</div>
 
-<!-- INI MODAL CART PRODUCT YA KI -->
-<!-- Keranjang Offcanvas -->
-<div class="offcanvas offcanvas-end" tabindex="-1" id="cartSidebar">
-  <div class="offcanvas-header border-bottom">
-    <h5 class="offcanvas-title">Keranjang Kamu</h5>
-    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
-  </div>
-
-  <div class="offcanvas-body d-flex flex-column">
-
-    <!-- Tabs -->
-    <ul class="nav nav-tabs mb-3" id="cartTab" role="tablist">
-      <li class="nav-item" role="presentation">
-        <button class="nav-link active" id="tanpa-tab" data-bs-toggle="tab" data-bs-target="#tanpaResep" type="button" role="tab">Tanpa Resep</button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="nav-link" id="perlu-tab" data-bs-toggle="tab" data-bs-target="#perluResep" type="button" role="tab">Perlu Resep</button>
-      </li>
-    </ul>
-
-    <!-- Isi Tab -->
-    <div class="tab-content flex-grow-1 overflow-auto" id="cartTabContent">
-
-      <!-- Tanpa Resep -->
-      <div class="tab-pane fade show active" id="tanpaResep" role="tabpanel">
-        <div id="tanpaResepList">
-          <!-- Produk tanpa resep akan diinject di sini -->
-        </div>
-      </div>
-
-      <!-- Perlu Resep -->
-      <div class="tab-pane fade" id="perluResep" role="tabpanel">
-        <div id="perluResepList">
-          <!-- Kosong: tidak ada produk -->
-        </div>
-
-        <!-- ALERT INSTRUKSI -->
-        <div class="alert alert-info mt-3" role="alert">
-          Silakan upload resep dokter dan isi data diri untuk konfirmasi produk obat.  
-          Tunggu admin merespon di tab <strong>Histori</strong> sampai mendapatkan konfirmasi yaa 😊
-        </div>
-
-        <!-- Upload Resep -->
-        <div class="mt-3">
-          <label for="uploadResep" class="form-label">Upload Resep Dokter</label>
-          <input type="file" class="form-control" id="uploadResep" accept="image/*">
-        </div>
-
-        <!-- Catatan Tambahan -->
-        <div class="mt-3">
-          <label for="catatanResep" class="form-label">Catatan Tambahan (Opsional)</label>
-          <textarea id="catatanResep" class="form-control" rows="3" placeholder="Tulis catatan tambahan di sini..."></textarea>
-        </div>
-      </div>
-
+  <!-- INI MODAL CART PRODUCT YA KI -->
+  <!-- OFFCANVAS SIDEBAR: HANYA UNTUK TANPA RESEP -->
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="cartSidebarTanpaResep" data-bs-scroll="true">
+    <div class="offcanvas-header border-bottom">
+      <h5 class="offcanvas-title">Keranjang Kamu</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
     </div>
 
-    <!-- Pilih Metode Pengiriman -->
-    <div class="mt-3">
-      <label for="deliveryMethod" class="form-label">Metode Pengiriman</label>
-      <select id="deliveryMethod" class="form-select">
-        <option value="0">Pilih Metode</option>
-        <option value="Gojek">Gojek</option>
-        <option value="Grab">Grab</option>
-        <option value="Shopee">Shopee</option>
-      </select>
-    </div>
+    <div class="offcanvas-body d-flex flex-column">
 
-    <!-- Summary -->
-    <div class="mt-4 border-top pt-3">
-      <!-- Tanpa Resep -->
-      <div id="summaryTanpaResep">
+      <!-- List Produk Tanpa Resep -->
+      <div id="tanpaResepList" class="flex-grow-1 overflow-auto mb-3">
+        <!-- Produk tanpa resep akan di-render via JavaScript di sini -->
+      </div>
+
+      <!-- Pilih Metode Pengiriman -->
+      <div class="mt-3">
+        <label for="deliveryMethod" class="form-label">Metode Pengiriman</label>
+        <select id="deliveryMethod" class="form-select">
+          <option value="0">Pilih Metode</option>
+          <option value="Gojek">Gojek</option>
+          <option value="Grab">Grab</option>
+          <option value="Shopee">Shopee</option>
+        </select>
+      </div>
+
+        <!-- Pilih Metode Pembayaran -->
+      <div class="mt-3">
+        <label for="paymentMethod" class="form-label">Metode Pembayaran</label>
+        <select id="paymentMethod" class="form-select">
+          <option value="0">Pilih Pembayaran</option>
+          <option value="transfer">Transfer Bank</option>
+          <option value="cod">Cash on Delivery (COD)</option>
+          <option value="ewallet">E-Wallet (OVO, GoPay, Dana)</option>
+          <option value="qris">QRIS</option>
+        </select>
+      </div>
+
+      <!-- Summary Total Harga -->
+      <div class="mt-4 border-top pt-3">
         <h5 class="fw-bold mt-2">Total: <span id="cartTotal" class="float-end">Rp0</span></h5>
         <button id="checkoutBtn" class="btn owsit-btn w-100 mt-3">Checkout</button>
       </div>
+    </div>
+  </div>
 
-      <!-- Perlu Resep -->
-      <div id="summaryPerluResep" class="d-none">
-        <button id="submitResepBtn" class="btn owsit-btn w-100 mt-2">Kirim Pengajuan Obat dan Lengkapkan Data Diri</button>
+  <!-- End Modal Tanpa Resep ki -->
+
+  <!-- MODAL PERLU RESEP (SLIDE UP) -->
+  <div class="modal fade" id="modalResepDokter" tabindex="-1" aria-labelledby="modalResepDokterLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen-sm-down modal-bottom">
+      <div class="modal-content rounded-top">
+        
+        <div class="modal-header border-bottom">
+          <h5 class="modal-title" id="modalResepDokterLabel">Obat Dengan Resep Dokter</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+        </div>
+
+        <div class="modal-body">
+
+          <!-- List Produk yang Perlu Resep -->
+          <div id="perluResepList">
+            <!-- Produk akan muncul di sini -->
+          </div>
+
+          <!-- ALERT INFO -->
+          <div class="alert alert-info mt-3" role="alert">
+            Silakan upload resep dokter dan isi data diri untuk konfirmasi produk obat.<br>
+            Tunggu admin merespon di tab <strong>Histori</strong> ya 😊
+          </div>
+
+          <!-- Upload Resep -->
+          <div class="mt-3">
+            <label for="uploadResep" class="form-label">Upload Resep Dokter</label>
+            <input type="file" class="form-control" id="uploadResep" accept="image/*">
+          </div>
+
+          <!-- Catatan Tambahan -->
+          <div class="mt-3">
+            <label for="catatanResep" class="form-label">Catatan Tambahan (Opsional)</label>
+            <textarea id="catatanResep" class="form-control" rows="3" placeholder="Tulis catatan tambahan di sini..."></textarea>
+          </div>
+
+          <!-- Pilih Metode Pengiriman -->
+          <div class="mt-3">
+            <label for="deliveryMethodResep" class="form-label">Metode Pengiriman</label>
+            <select id="deliveryMethodResep" class="form-select">
+              <option value="0">Pilih Metode</option>
+              <option value="Gojek">Gojek</option>
+              <option value="Grab">Grab</option>
+              <option value="Shopee">Shopee</option>
+            </select>
+          </div>
+        </div>
+
+            <!-- Pilih Metode Pembayaran -->
+        <div class="mt-3">
+          <label for="paymentMethod" class="form-label">Metode Pembayaran</label>
+          <select id="paymentMethod" class="form-select">
+            <option value="0">Pilih Pembayaran</option>
+            <option value="transfer">Transfer Bank</option>
+            <option value="cod">Cash on Delivery (COD)</option>
+            <option value="ewallet">E-Wallet (OVO, GoPay, Dana)</option>
+            <option value="qris">QRIS</option>
+          </select>
+        </div>
+
+        <div class="modal-footer border-top">
+          <button id="submitResepBtn" class="btn owsit-btn w-100">
+            Kirim Pengajuan Obat dan Lengkapi Data Diri
+          </button>
+        </div>
+
       </div>
     </div>
   </div>
-</div>
+  <!-- End Modal si pesan dengan resep dokter -->
 
-<!-- END MODEL CART -->
+
 
 
 <!-- Navbar -->
@@ -143,14 +177,17 @@
 
         <!-- Navigation links -->
         <div class="collapse navbar-collapse justify-content-between align-items-center" id="navbarContent">
-        <ul class="navbar-nav flex-wrap">
-            <li class="nav-item"><a class="nav-link fw-medium" href="#">Pain Relief</a></li>
-            <li class="nav-item"><a class="nav-link fw-medium" href="#">Cold and Flu</a></li>
-            <li class="nav-item"><a class="nav-link fw-medium" href="#">Diabetes Care</a></li>
-            <li class="nav-item"><a class="nav-link fw-medium" href="#">First Aid</a></li>
-            <li class="nav-item"><a class="nav-link fw-medium" href="#">Skin Care</a></li>
-            <li class="nav-item"><a class="nav-link fw-medium" href="#">Child and Baby Care</a></li>
-        </ul>
+          <ul class="navbar-nav flex-wrap kategori-navbar">
+            <li class="nav-item"><a class="nav-link fw-medium" href="#" data-kategori="Obat Demam">Obat Demam</a></li>
+            <li class="nav-item"><a class="nav-link fw-medium" href="#" data-kategori="Obat Flu">Obat Flu</a></li>
+            <li class="nav-item"><a class="nav-link fw-medium" href="#" data-kategori="Obat Batuk">Obat Batuk</a></li>
+            <li class="nav-item"><a class="nav-link fw-medium" href="#" data-kategori="Obat Luka">Obat Luka</a></li>
+            <li class="nav-item"><a class="nav-link fw-medium" href="#" data-kategori="Obat Alergi">Obat Alergi</a></li>
+            <li class="nav-item"><a class="nav-link fw-medium" href="#" data-kategori="Vitamin">Vitamin</a></li>
+            <li class="nav-item"><a class="nav-link fw-bold text-primary" href="#" data-lihat-semua>Semua Produk</a></li>
+
+          </ul>
+
 
         <!-- Banner wa ke farmasi Desktop -->
         <div class="wa-banner-desktop d-none d-lg-block ms-lg-auto">
@@ -183,6 +220,7 @@
 </nav>
 <!-- End Navbar -->
 
+<!-- Konten hero carosel di awal -->
 <section class="hero-section py-5">
   <div class="container">
     <div class="card p-4 shadow-lg rounded-4 overflow-hidden">
@@ -190,22 +228,23 @@
       <div id="heroCarousel" class="carousel slide" data-bs-interval="false">
         <div class="carousel-inner">
 
+          <!-- Slide 1: Tanpa Resep Dokter -->
           <div class="carousel-item active">
             <div class="d-flex flex-column-reverse flex-md-row align-items-center justify-content-between gap-5">
               <div class="text-area" style="max-width: 700px;">
                 <h1 class="display-5 fw-bolder">
-                  Jaga Kesehatan<br>
-                  Dengan Obat <span class="text-primary">Terbaik Dan Tepat</span>
+                  Pesan Produk Kesehatan<br>
+                  <span class="text-primary">Tanpa Resep Dokter</span>
                 </h1>
                 <p class="lead text-muted fw-semibold">
-                  Nikmati layanan penjualan obat kami dengan sistem diantar ke rumah dengan aman
+                  Kami menyediakan berbagai produk kesehatan yang dapat langsung Anda pesan tanpa perlu resep dokter. Aman, mudah, dan langsung diantar ke rumah Anda.
                 </p>
                 <div class="mt-4 d-flex gap-3 flex-wrap">
-                  <a href="#" class="btn btn-success btn-lg">
-                    <i class="bi bi-cart-plus"></i> Belanja sekarang !
+                  <a href="#productpop" class="btn btn-success btn-lg">
+                    <i class="bi bi-cart-plus"></i> Belanja Sekarang!
                   </a>
                   <button class="btn btn-outline-light btn-lg" data-bs-target="#heroCarousel" data-bs-slide="next">
-                    Cek layanan →
+                    Cek layanan pesan dengan resep dokter  →
                   </button>
                 </div>
               </div>
@@ -216,25 +255,26 @@
             </div>
           </div>
 
+          <!-- Slide 2: Dengan Resep Dokter -->
           <div class="carousel-item">
             <div class="d-flex flex-column-reverse flex-md-row align-items-center justify-content-between gap-5">
               <div class="text-area" style="max-width: 700px;">
                 <h1 class="display-5 fw-bolder">
-                  Layanan <span class="text-info">Unggulan</span> Kami
+                  Pesan Obat <span class="text-info">Dengan Resep Dokter</span>
                 </h1>
                 <p class="lead text-muted fw-semibold">
-                  Dapatkan berbagai layanan kesehatan terbaik kami, mulai dari konsultasi hingga pengiriman obat cepat.
+                  Upload resep dokter Anda secara online dan kami akan menyiapkan serta mengantarkan obat Anda dengan cepat dan aman langsung ke rumah.
                 </p>
                 <ul class="list-unstyled mt-4">
-                  <li><i class="bi bi-check-circle-fill text-success me-2"></i>Konsultasi Dokter Online</li>
-                  <li><i class="bi bi-check-circle-fill text-success me-2"></i>Pemesanan Obat Mudah</li>
-                  <li><i class="bi bi-check-circle-fill text-success me-2"></i>Pengiriman Cepat & Aman</li>
-                  <li><i class="bi bi-check-circle-fill text-success me-2"></i>Layanan 24/7</li>
+                  <li><i class="bi bi-check-circle-fill text-success me-2"></i>Upload Resep Secara Online</li>
+                  <li><i class="bi bi-check-circle-fill text-success me-2"></i>Proses Validasi Cepat</li>
+                  <li><i class="bi bi-check-circle-fill text-success me-2"></i>Obat Dijamin Keaslian & Keamanannya</li>
+                  <li><i class="bi bi-check-circle-fill text-success me-2"></i>Pengiriman Langsung ke Rumah</li>
                 </ul>
                 <div class="mt-4 d-flex gap-3 flex-wrap">
-                  <a href="#" class="btn btn-info btn-lg">
-                    <i class="bi bi-info-circle"></i> Pelajari Lebih Lanjut
-                  </a>
+                <button class="btn btn-info btn-lg" data-bs-toggle="modal" data-bs-target="#modalResepDokter">
+                  Pesan Obat dengan Resep Dokter Anda
+                </button>
                   <button class="btn btn-outline-light btn-lg" data-bs-target="#heroCarousel" data-bs-slide="prev">
                     ← Kembali
                   </button>
@@ -253,6 +293,8 @@
     </div>
   </div>
 </section>
+
+<!-- End konten carosel di awal -->
 
 
 <!-- Info Top Section -->
@@ -325,7 +367,7 @@
 <!-- End Populer Product -->
 
 <!-- Produk Populer -->
-<section class="container my-5">
+<section id="productpop" class="container my-5">
   <div class="d-flex justify-content-between align-items-center mb-4">
     <h4 class="fw-bold">Produk Populer</h4>
     <div class="d-flex gap-2">
@@ -357,7 +399,6 @@
         <div class="card-footer bg-transparent border-0">
           <div class="d-flex flex-column">
             <p class="text-danger fw-bold mb-2 harga-produk">Rp.15.000</p>
-          
           </div>
         </div>
       </div>
@@ -484,6 +525,7 @@
 
   </div>
 </section>
+<!-- End Populer product -->
 
 <!-- product -->
 <section class="container mt-7">
@@ -496,34 +538,36 @@
       <h5 class="fw-bold mb-2">Belanja Sekarang !</h5>
       <h6 class="fw-semibold mb-3">Kaetgori Produk</h6>
       <div class="list-group kategori-list shadow-sm">
-        <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-          Vitamin <i class="bi bi-plus-circle-fill "></i>
-        </a>
-        <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-          Obat Batuk <i class="bi bi-plus-circle-fill "></i>
-        </a>
-        <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-          Obat Flu <i class="bi bi-plus-circle-fill "></i>
-        </a>
-        <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-          Obat Demam <i class="bi bi-plus-circle-fill "></i>
-        </a>
-        <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-          Obat Luka <i class="bi bi-plus-circle-fill  "></i>
-        </a>
-         <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-          Obat Alergi <i class="bi bi-plus-circle-fill  "></i>
-        </a>
+      <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" data-kategori="Vitamin">
+        Vitamin <i class="bi bi-plus-circle-fill"></i>
+      </a>
+      <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" data-kategori="Obat Batuk">
+        Obat Batuk <i class="bi bi-plus-circle-fill"></i>
+      </a>
+      <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" data-kategori="Obat Flu">
+        Obat Flu <i class="bi bi-plus-circle-fill"></i>
+      </a>
+      <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" data-kategori="Obat Demam">
+        Obat Demam <i class="bi bi-plus-circle-fill"></i>
+      </a>
+      <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" data-kategori="Obat Luka">
+        Obat Luka <i class="bi bi-plus-circle-fill"></i>
+      </a>
+      <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" data-kategori="Obat Alergi">
+        Obat Alergi <i class="bi bi-plus-circle-fill"></i>
+      </a>
+      <a href="#" id="lihat-semua" class="list-group-item list-group-item-action fw-bold text-center text-primary">
+        Lihat Semua Produk
+      </a>
+
       </div>
     </div>
-
-
 
     <!-- Daftar Produk -->
     <div class="col-lg-9">
       <div class="row g-4">
         <!-- Card Produk -->
-        <div class="col-6 col-md-4 col-lg-3">
+        <div class="col-6 col-md-4 col-lg-3" data-kategori="Obat Batuk">
           <div class="card card-obat h-100 position-relative">
             <span class="badge bg-success text-white position-absolute top-0 start-0 rounded-end px-2 py-1 small z-1">
               Tanpa Resep
@@ -547,7 +591,7 @@
         </div>
 
         <!-- Card Produk Lain -->
-        <div class="col-6 col-md-4 col-lg-3">
+        <div class="col-6 col-md-4 col-lg-3"data-kategori="Vitamin">
           <div class="card card-obat h-100 position-relative">
             <span class="badge bg-success text-white position-absolute top-0 start-0 rounded-end px-2 py-1 small z-1">
               Tanpa Resep
@@ -570,8 +614,32 @@
           </div>
         </div>
 
+              
+        <div class="col-6 col-md-4 col-lg-3"data-kategori="Obat Demam">
+          <div class="card card-obat h-100 position-relative">
+            <span class="badge bg-success text-white position-absolute top-0 start-0 rounded-end px-2 py-1 small z-1">
+              Tanpa Resep
+            </span>
+            <div class="img-hover-container">
+              <img src="assets/dem.png" class="card-img-top" alt="Vitamin C">
+            </div>
+            <div class="card-body px-3 pt-3">
+              <p class="text-muted small mb-1 d-flex justify-content-start align-items-center gap-1">
+                Obat Demam
+              </p>
+              <h6 class="fw-semibold mb-2 small">Vermint 12 Kapsul 250mg</h6>
+            </div>
+            <div class="card-footer d-flex justify-content-between align-items-center px-3 py-2 bg-white border-0">
+              <span class="harga-produk fw-bold">Rp29.000</span>
+              <div class="cart-icon rounded-circle d-inline-flex align-items-center justify-content-center">
+                <i class="bi bi-cart-plus-fill"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
         
-        <div class="col-6 col-md-4 col-lg-3">
+        <div class="col-6 col-md-4 col-lg-3"data-kategori="Obat Batuk">
           <div class="card card-obat h-100 position-relative">
             <span class="badge bg-success text-white position-absolute top-0 start-0 rounded-end px-2 py-1 small z-1">
               Tanpa Resep
@@ -595,7 +663,7 @@
         </div>
 
         
-        <div class="col-6 col-md-4 col-lg-3">
+        <div class="col-6 col-md-4 col-lg-3" data-kategori="Obat Luka">
           <div class="card card-obat h-100 position-relative">
             <span class="badge bg-success text-white position-absolute top-0 start-0 rounded-end px-2 py-1 small z-1">
               Tanpa Resep
@@ -618,7 +686,53 @@
           </div>
         </div>
 
-        <div class="col-6 col-md-4 col-lg-3">
+        <div class="col-6 col-md-4 col-lg-3" data-kategori="Obat Flu">
+          <div class="card card-obat h-100 position-relative">
+            <span class="badge bg-success text-white position-absolute top-0 start-0 rounded-end px-2 py-1 small z-1">
+              Tanpa Resep
+            </span>
+            <div class="img-hover-container">
+              <img src="assets/bod.png" class="card-img-top" alt="Vitamin C">
+            </div>
+            <div class="card-body px-3 pt-3">
+              <p class="text-muted small mb-1 d-flex justify-content-start align-items-center gap-1">
+                Obat flu
+              </p>
+              <h6 class="fw-semibold mb-2 small">Bodrek Flu Dan Batuk Berdahak PE 4 Kaplet</h6>
+            </div>
+            <div class="card-footer d-flex justify-content-between align-items-center px-3 py-2 bg-white border-0">
+              <span class="harga-produk fw-bold">Rp8.000</span>
+              <div class="cart-icon rounded-circle d-inline-flex align-items-center justify-content-center">
+                <i class="bi bi-cart-plus-fill"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+                <div class="col-6 col-md-4 col-lg-3" data-kategori="Obat Flu">
+          <div class="card card-obat h-100 position-relative">
+            <span class="badge bg-success text-white position-absolute top-0 start-0 rounded-end px-2 py-1 small z-1">
+              Tanpa Resep
+            </span>
+            <div class="img-hover-container">
+              <img src="assets/pan.png" class="card-img-top" alt="Vitamin C">
+            </div>
+            <div class="card-body px-3 pt-3">
+              <p class="text-muted small mb-1 d-flex justify-content-start align-items-center gap-1">
+                Obat flu
+              </p>
+              <h6 class="fw-semibold mb-2 small">Panadol Anak Paracetamol 60ml</h6>
+            </div>
+            <div class="card-footer d-flex justify-content-between align-items-center px-3 py-2 bg-white border-0">
+              <span class="harga-produk fw-bold">Rp20.000</span>
+              <div class="cart-icon rounded-circle d-inline-flex align-items-center justify-content-center">
+                <i class="bi bi-cart-plus-fill"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-4 col-lg-3"data-kategori="Obat Alergi">
           <div class="card card-obat h-100 position-relative">
              <span class="badge bg-danger text-white position-absolute top-0 start-0 rounded-end px-2 py-1 small z-1">
               Perlu Resep
@@ -645,16 +759,54 @@
   </div>
 </section>
 
+<footer class="py-4 mt-5" style="background-color: #1e3a8a;">
+  <div class="container text-white">
+    <div class="row align-items-start">
+      <!-- Logo dan navigasi kategori -->
+      <div class="col-lg-8 mb-4 mb-lg-0">
+        <h5 class="fw-bold">Untitled UI</h5>
+      <ul class="navbar-nav flex-row flex-wrap mt-2 kategori-navbar">
+        <li class="nav-item me-3"><a class="text-decoration-none text-white-50" href="#" data-kategori="Obat Demam">Obat Demam</a></li>
+        <li class="nav-item me-3"><a class="text-decoration-none text-white-50" href="#" data-kategori="Obat Flu">Obat Flu</a></li>
+        <li class="nav-item me-3"><a class="text-decoration-none text-white-50" href="#" data-kategori="Obat Batuk">Obat Batuk</a></li>
+        <li class="nav-item me-3"><a class="text-decoration-none text-white-50" href="#" data-kategori="Obat Luka">Obat Luka</a></li>
+        <li class="nav-item me-3"><a class="text-decoration-none text-white-50" href="#" data-kategori="Obat Alergi">Obat Alergi</a></li>
+        <li class="nav-item me-3"><a class="text-decoration-none text-white-50" href="#" data-kategori="Vitamin">Vitamin</a></li>
+        <li class="nav-item me-3"><a class="text-decoration-none text-white fw-bold" href="#" data-lihat-semua>Semua Produk</a></li>
+      </ul>
 
-
-
-
-
+      </div>
+      <!-- Banner WhatsApp -->
+      <div class="col-lg-4 d-flex justify-content-lg-end justify-content-start mt-4 mt-lg-0">
+        <div class="wa-banner">
+          <div class="bg-white text-center rounded px-3 py-2 small d-inline-block">
+            <strong class="aw" style="color: #334;">BINGUNG MAU SOLUSI OBAT APA?</strong><br />
+            <a href="https://wa.me/6281385331107?text=Halo%20Dok%2C%20saya%20bingung%20mau%20pilih%20obat%20nih" 
+              class="fw-semibold text-decoration-underline" 
+              style="color: #25D366;" target="_blank">
+              Klik dan tanya di WA sini ya <i class="bi bi-whatsapp" style="color: #25D366;"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr class="border-light my-4" />
+    <div class="d-flex flex-column flex-md-row justify-content-between text-white-50 small">
+      <div>&copy; 2077 Untitled UI. All rights reserved.</div>
+      <div class="mt-2 mt-md-0">
+        <a href="#" class="text-white-50 text-decoration-none me-3">Terms</a>
+        <a href="#" class="text-white-50 text-decoration-none me-3">Privacy</a>
+        <a href="#" class="text-white-50 text-decoration-none">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>
 
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="js/script.js"></script>
-    <script src="js/cart.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/kategori.js"></script>
     
 </body>
 </html>
