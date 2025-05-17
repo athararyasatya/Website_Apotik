@@ -18,17 +18,27 @@
       <a class="navbar-brand fw-bold text-white fs-4" href="#">Apotiku</a>
 
       <div>
-            <!-- Histori -->
-        <a href="#" class="me-3 text-dark text-decoration-none">
-          <i class="bi bi-clock-history"></i>
-          <span class="d-none d-md-inline">Histori</span>
-        </a>
+    <!-- Pesanan-->
+<!-- Tambahkan ini di dalam tag <a> di menu Pesanan -->
+<a href="allpesanan.html" class="me-3 text-dark text-decoration-none position-relative">
+  <i class="bi bi-clipboard-check"></i>
+  <span class="d-none d-md-inline">Pesanan</span>
+  <span id="badge-pesanan" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="display: none;"></span>
+</a>
 
-        <!-- Akun -->
-        <a href="#" data-bs-toggle="modal" data-bs-target="#modalLogin" class="me-3 text-dark text-decoration-none">
-          <i class="bi bi-person"></i>
-          <span class="d-none d-md-inline">Akun kamu</span>
-        </a>
+
+<!-- Pengajuan -->
+<a href="pengajuan.html" class="me-3 text-dark text-decoration-none">
+  <i class="bi bi-clipboard"></i>
+  <span class="d-none d-md-inline">Pengajuan</span>
+</a>
+
+<!-- Akun -->
+<a href="#" data-bs-toggle="modal" data-bs-target="#modalLogin" class="me-3 text-dark text-decoration-none">
+  <i class="bi bi-person"></i>
+  <span class="d-none d-md-inline">Akun kamu</span>
+</a>
+
         <!-- Keranjang -->
         <a href="#" class="text-dark text-decoration-none position-relative"
           data-bs-toggle="offcanvas"  data-bs-target="#cartSidebarTanpaResep">
@@ -95,7 +105,7 @@
 
 
   <!-- Modal Profil (Read-Only) -->
-<div class="modal fade" id="modalProfil" tabindex="-1" aria-labelledby="modalProfilLabel" aria-hidden="true">
+<!-- <div class="modal fade" id="modalProfil" tabindex="-1" aria-labelledby="modalProfilLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content rounded-4 shadow">
       <div class="modal-header border-0">
@@ -104,13 +114,12 @@
       </div>
       <div class="modal-body pt-0">
 
-        <!-- Avatar -->
         <div class="text-center mb-4">
           <img src="assets/user.png" class="rounded-circle shadow" width="100" height="100" alt="Avatar">
           <h6 class="mt-2 fw-bold" id="profilNama">Melody Marks</h6>
         </div>
 
-        <!-- Data Diri -->
+     
         <ul class="list-group list-group-flush small">
           <li class="list-group-item d-flex justify-content-between">
             <span>Email</span>
@@ -126,7 +135,7 @@
           </li>
         </ul>
 
-        <!-- Tombol Logout -->
+     
         <div class="mt-4 text-center">
           <button class="btn btn-outline-danger rounded-pill w-100" id="btnLogout">Keluar Akun</button>
         </div>
@@ -134,7 +143,7 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
 
 <!-- Modal Login -->
@@ -146,18 +155,17 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
       </div>
       <div class="modal-body pt-2">
-        <form id="loginForm">
-          <div class="mb-3">
-            <label for="emailLogin" class="form-label">Email</label>
-            <input type="email" class="form-control rounded-3" id="emailLogin" placeholder="contoh@email.com">
-          </div>
-          <div class="mb-3">
-            <label for="passwordLogin" class="form-label">Kata Sandi</label>
-            <input type="password" class="form-control rounded-3" id="passwordLogin" placeholder="••••••••">
-          </div>
-         <button type="submit" class="btn btn-primary w-100 rounded-pill">Login</button>
-        </form>
-
+       <form id="loginForm">
+        <div class="mb-3">
+          <label for="emailLogin" class="form-label">Email</label>
+          <input type="email" class="form-control rounded-3" id="emailLogin" required>
+        </div>
+        <div class="mb-3">
+          <label for="passwordLogin" class="form-label">Kata Sandi</label>
+          <input type="password" class="form-control rounded-3" id="passwordLogin" required>
+        </div>
+        <button type="submit" class="btn btn-primary w-100 rounded-pill">Login</button>
+      </form>
         <!-- Alert Daftar -->
       <div class="alert alert-light border mt-4 mb-0 text-center small rounded-3" role="alert">
         Belum punya akun? 
@@ -244,6 +252,10 @@
     <div class="border-top pt-3">
       <hr class="my-3">
       <label class="form-label fw-semibold">Lokasi Anda & Rute ke Apotek</label>
+                  <!-- Alert Penting GPS -->
+<div class="alert alert-danger mt-1 small fw-semibold" role="alert">
+  <i class="bi bi-geo-alt-fill"></i> Penting! Aktifkan GPS atau izinkan lokasi di perangkat Anda agar peta dan total ongkir bisa muncul dengan akurat.
+</div>
       <div id="cartMap" style="height: 250px; border-radius: 10px;"></div>
       <div class="alert alert-warning mt-2 small">
         Gratis Ongkir jika jarak tidak lebih dari 5 km jika lebih dihitung Rp3.000 per 1 km (dibulatkan ke atas).
@@ -261,7 +273,8 @@
           Silakan checkout dan cek status dan konfirmasi pesananmu di tab <strong>Pesanan</strong> ya.
         </div>
 
-        <button id="checkoutBtn" class="btn owsit-btn w-100 mt-2">Checkout</button>
+<button id="checkoutBtn" class="btn owsit-btn w-100 mt-2">Checkout</button>
+
       </div>
 
     </div>
@@ -633,6 +646,8 @@
   </div>
 </section>
 <!-- End Populer product -->
+
+
 
 <!-- product -->
 <section id="producttanparesep" class="container mt-7">

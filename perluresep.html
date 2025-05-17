@@ -14,18 +14,25 @@
 
 <!-- Top Bar -->
 <div class="top-bar bg-white py-2 shadow-sm sticky-top" style="top: 0;" >
-<div class="container d-flex justify-content-between align-items-center">
+    <div class="container d-flex justify-content-between align-items-center">
     <a class="navbar-brand fw-bold text-white fs-4" href="#">Apotiku</a>
 
     <div>
-        <!-- Histori -->
-    <a href="#" class="me-3 text-dark text-decoration-none">
-        <i class="bi bi-clock-history"></i>
-        <span class="d-none d-md-inline">Histori</span>
+    <!-- Pesanan-->
+    <a href="allpesanan.html" class="me-3 text-dark text-decoration-none">
+    <i class="bi bi-clipboard-check"></i>
+    <span class="d-none d-md-inline">Pesanan</span>
     </a>
 
+    <!-- Pengajuan -->
+    <a href="pengajuan.html" class="me-3 text-dark text-decoration-none">
+    <i class="bi bi-clipboard"></i>
+    <span class="d-none d-md-inline">Pengajuan</span>
+    </a>
+
+        <!-- Akun -->
     <!-- Akun -->
-    <a href="#" data-bs-toggle="modal" data-bs-target="#modalLogin" class="me-3 text-dark text-decoration-none">
+    <a href="profile.html"   class="me-3 text-dark text-decoration-none">
     <i class="bi bi-person"></i>
     <span class="d-none d-md-inline">Akun kamu</span>
     </a>
@@ -44,7 +51,7 @@
     </a>
 
     </div>
-</div>
+ </div>
 </div>
 
 <!-- Navbar -->
@@ -61,8 +68,9 @@
       <ul class="navbar-nav flex-wrap kategori-navbar">
         <li class="nav-item"><a class="nav-link fw-medium" href="index.html">Home</a></li>
            <li class="nav-item"><a class="nav-link fw-medium" href="#">Layanan</a></li>
-        <li class="nav-item"><a class="nav-link fw-bold text-primary" href="#">Pesan Obat Dengan Resep Dokter</a></li>
-        <li class="nav-item"><a class="nav-link fw-bold text-primary" href="#producttanparesep">Pesan Obat Tanpa Resep Dokter</a></li>
+        <li class="nav-item"><a class="nav-link fw-bold text-primary" href="perluresep.html">Pesan Obat Dengan Resep Dokter</a></li>
+        <a class="nav-link fw-bold text-primary" href="index.html#productpop">Pesan Obat Tanpa Resep Dokter</a>
+
       </ul>
 
       <!-- Banner wa ke farmasi Desktop -->
@@ -95,6 +103,10 @@
 
 <!-- End Navbar -->
 
+
+
+
+
 <section class="py-5">
   <div class="container" style="max-width: 700px;"> <!-- Lebar maksimum dibatasi -->
     <div class="card shadow rounded-4 p-3 p-md-4">
@@ -122,6 +134,10 @@
           <!-- Peta Lokasi -->
           <div class="mt-4">
             <label class="form-label fw-semibold">Lokasi Anda & Rute ke Apotek</label>
+            <!-- Alert Penting GPS -->
+            <div class="alert alert-danger mt-1 small fw-semibold" role="alert">
+            <i class="bi bi-geo-alt-fill"></i> Penting! Aktifkan GPS atau izinkan lokasi di perangkat Anda agar peta dan total ongkir bisa muncul dengan akurat.
+            </div>
             <div id="map" style="height: 300px; border-radius: 10px; margin-bottom: 15px;"></div>
           </div>
             <div class="alert alert-warning mt-2 small">
@@ -138,11 +154,11 @@
           <div class="mt-4">
                <!-- ALERT PESANAN -->
         <div class="alert alert-info mt-3 small" role="alert">
-          Silakan kirim pengajuan obat dan cek status beserta konfirmasi pesananmu di tab <strong>Pesanan</strong> ya.
+          Silakan kirim pengajuan obat dan cek status beserta konfirmasi pesananmu di tab <strong>Pengajuan</strong> ya.
         </div>
-<button id="submitResepBtn" class="btn custom-btnn w-100 fw-semibold">
-  Kirim Pengajuan Obat 
-</button>
+        <button id="submitResepBtn" class="btn custom-btnn w-100 fw-semibold">
+        Kirim Pengajuan Obat 
+        </button>
 
           </div>
 
