@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apotiku Landing Page</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link rel="stylesheet" href="style/style.css" />
+</head>
+<body>
+
+<!-- Top Bar -->
+<div class="top-bar bg-white py-2 shadow-sm sticky-top" style="top: 0;" >
+<div class="container d-flex justify-content-between align-items-center">
+    <a class="navbar-brand fw-bold text-white fs-4" href="#">Apotiku</a>
+
+    <div>
+        <!-- Histori -->
+    <a href="#" class="me-3 text-dark text-decoration-none">
+        <i class="bi bi-clock-history"></i>
+        <span class="d-none d-md-inline">Histori</span>
+    </a>
+
+    <!-- Akun -->
+    <a href="#" data-bs-toggle="modal" data-bs-target="#modalLogin" class="me-3 text-dark text-decoration-none">
+    <i class="bi bi-person"></i>
+    <span class="d-none d-md-inline">Akun kamu</span>
+    </a>
+
+
+    <!-- Keranjang -->
+    <a href="#" class="text-dark text-decoration-none position-relative"
+        data-bs-toggle="offcanvas"  data-bs-target="#cartSidebarTanpaResep">
+        <i class="bi bi-cart fs-5"></i>
+        <span id="cart-badge"
+            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+            style="display: none; font-size: 0.6rem;">
+        0
+        </span>
+        <span class="d-none d-md-inline">Keranjang kamu</span>
+    </a>
+
+    </div>
+</div>
+</div>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light py-2">
+  <div class="container">
+
+    <!-- Hamburger toggle button -->
+    <button class="navbar-toggler ms-auto border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+      <i class="bi bi-list fs-2 text-dark"></i>
+    </button>
+
+    <!-- Navigation links -->
+    <div class="collapse navbar-collapse justify-content-between align-items-center" id="navbarContent">
+      <ul class="navbar-nav flex-wrap kategori-navbar">
+        <li class="nav-item"><a class="nav-link fw-medium" href="index.html">Home</a></li>
+           <li class="nav-item"><a class="nav-link fw-medium" href="#">Layanan</a></li>
+        <li class="nav-item"><a class="nav-link fw-bold text-primary" href="#">Pesan Obat Dengan Resep Dokter</a></li>
+        <li class="nav-item"><a class="nav-link fw-bold text-primary" href="#producttanparesep">Pesan Obat Tanpa Resep Dokter</a></li>
+      </ul>
+
+      <!-- Banner wa ke farmasi Desktop -->
+      <div class="wa-banner-desktop d-none d-lg-block ms-lg-auto">
+        <div class="text-white bg-primary text-center rounded px-3 py-2 small d-inline-block">
+          <strong>BINGUNG MAU SOLUSI OBAT APA?</strong><br />
+          <a href="https://wa.me/6281385331107?text=Halo%20Dok%2C%20saya%20bingung%20mau%20pilih%20obat%20nih" 
+             class="text-white text-decoration-underline fw-semibold" 
+             target="_blank">
+            Klik dan tanya di WA sini ya <i class="bi bi-whatsapp"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Banner wa ke farmasi Mobile -->
+    <div class="container d-lg-none mt-2">
+      <div class="wa-banner-mobile text-white bg-primary text-center rounded py-1 px-2 small">
+        <strong>BINGUNG MAU SOLUSI OBAT APA?</strong><br />
+        <a href="https://wa.me/6281385331107?text=Halo%20Dok%2C%20saya%20bingung%20mau%20pilih%20obat%20nih" 
+           class="text-white text-decoration-underline fw-semibold" 
+           target="_blank">
+          Klik dan tanya di WA sini ya <i class="bi bi-whatsapp"></i>
+        </a>
+      </div>
+    </div>
+    
+  </div>
+</nav>
+
+<!-- End Navbar -->
+
+<section class="py-5">
+  <div class="container" style="max-width: 700px;"> <!-- Lebar maksimum dibatasi -->
+    <div class="card shadow rounded-4 p-3 p-md-4">
+      <div class="row justify-content-center">
+        <div class="col-12">
+
+          <!-- Info -->
+          <div class="alert alert-info mt-3 mb-0 small">
+            Silakan upload resep dokter dan isi data diri untuk konfirmasi produk obat.
+            Tunggu admin merespon di tab <strong>Histori</strong> ya 😊
+          </div>
+
+          <!-- Upload Resep -->
+          <div class="mt-4">
+            <label for="uploadResep" class="form-label fw-semibold">Upload Resep Dokter</label>
+            <input type="file" class="form-control" id="uploadResep" accept="image/*">
+          </div>
+
+          <!-- Catatan -->
+          <div class="mt-3">
+            <label for="catatanResep" class="form-label fw-semibold">Catatan Tambahan (Opsional)</label>
+            <textarea id="catatanResep" class="form-control" rows="3" placeholder="Tulis catatan tambahan di sini..."></textarea>
+          </div>
+
+          <!-- Peta Lokasi -->
+          <div class="mt-4">
+            <label class="form-label fw-semibold">Lokasi Anda & Rute ke Apotek</label>
+            <div id="map" style="height: 300px; border-radius: 10px; margin-bottom: 15px;"></div>
+          </div>
+            <div class="alert alert-warning mt-2 small">
+            Gratis Ongkir jika jarak tidak lebih dari 5 km jika lebih dihitung Rp3.000 per 1 km (dibulatkan ke atas).
+            </div>
+
+          <div id="ongkirInfo" class="mt-2 text-muted small fw-semibold">
+            Ongkir: -
+          </div>
+
+          
+
+          <!-- Tombol -->
+          <div class="mt-4">
+               <!-- ALERT PESANAN -->
+        <div class="alert alert-info mt-3 small" role="alert">
+          Silakan kirim pengajuan obat dan cek status beserta konfirmasi pesananmu di tab <strong>Pesanan</strong> ya.
+        </div>
+<button id="submitResepBtn" class="btn custom-btnn w-100 fw-semibold">
+  Kirim Pengajuan Obat 
+</button>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<!-- footer -->
+<footer class="py-4 mt-5" style="background-color: #1e3a8a;">
+  <div class="container text-white">
+    <div class="row align-items-start">
+      <!-- Logo dan navigasi kategori -->
+      <div class="col-lg-8 mb-4 mb-lg-0">
+        <h5 class="fw-bold">Apotiku</h5>
+      <ul class="navbar-nav flex-row flex-wrap mt-2 kategori-navbar">
+        <li class="nav-item me-3"><a class="text-decoration-none text-white-50" href="#" data-kategori="Obat Demam">Obat Demam</a></li>
+        <li class="nav-item me-3"><a class="text-decoration-none text-white-50" href="#" data-kategori="Obat Flu">Obat Flu</a></li>
+        <li class="nav-item me-3"><a class="text-decoration-none text-white-50" href="#" data-kategori="Obat Batuk">Obat Batuk</a></li>
+        <li class="nav-item me-3"><a class="text-decoration-none text-white-50" href="#" data-kategori="Obat Luka">Obat Luka</a></li>
+        <li class="nav-item me-3"><a class="text-decoration-none text-white-50" href="#" data-kategori="Obat Alergi">Obat Alergi</a></li>
+        <li class="nav-item me-3"><a class="text-decoration-none text-white-50" href="#" data-kategori="Vitamin">Vitamin</a></li>
+        <li class="nav-item me-3"><a class="text-decoration-none text-white fw-bold" href="#" data-lihat-semua>Semua Produk</a></li>
+      </ul>
+
+      </div>
+      <!-- Banner WhatsApp -->
+      <div class="col-lg-4 d-flex justify-content-lg-end justify-content-start mt-4 mt-lg-0">
+        <div class="wa-banner">
+          <div class="bg-white text-center rounded px-3 py-2 small d-inline-block">
+            <strong class="aw" style="color: #334;">BINGUNG MAU SOLUSI OBAT APA?</strong><br />
+            <a href="https://wa.me/6281385331107?text=Halo%20Dok%2C%20saya%20bingung%20mau%20pilih%20obat%20nih" 
+              class="fw-semibold text-decoration-underline" 
+              style="color: #25D366;" target="_blank">
+              Klik dan tanya di WA sini ya <i class="bi bi-whatsapp" style="color: #25D366;"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr class="border-light my-4" />
+    <div class="d-flex flex-column flex-md-row justify-content-between text-white-50 small">
+      <div>&copy; 2077 Untitled UI. All rights reserved.</div>
+      <div class="mt-2 mt-md-0">
+        <a href="#" class="text-white-50 text-decoration-none me-3">Terms</a>
+        <a href="#" class="text-white-50 text-decoration-none me-3">Privacy</a>
+        <a href="#" class="text-white-50 text-decoration-none">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/script.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/kategori.js"></script>
+<script src="js/map.js"></script>
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+</body>
+</html>

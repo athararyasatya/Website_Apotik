@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
   <link rel="stylesheet" href="style/style.css" />
 </head>
 <body>
@@ -24,12 +25,10 @@
         </a>
 
         <!-- Akun -->
-<a href="#" data-bs-toggle="modal" data-bs-target="#modalLogin" class="me-3 text-dark text-decoration-none">
-  <i class="bi bi-person"></i>
-  <span class="d-none d-md-inline">Akun kamu</span>
-</a>
-
-
+        <a href="#" data-bs-toggle="modal" data-bs-target="#modalLogin" class="me-3 text-dark text-decoration-none">
+          <i class="bi bi-person"></i>
+          <span class="d-none d-md-inline">Akun kamu</span>
+        </a>
         <!-- Keranjang -->
         <a href="#" class="text-dark text-decoration-none position-relative"
           data-bs-toggle="offcanvas"  data-bs-target="#cartSidebarTanpaResep">
@@ -45,6 +44,54 @@
       </div>
     </div>
   </div>
+
+  <!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light py-2">
+  <div class="container">
+
+    <!-- Hamburger toggle button -->
+    <button class="navbar-toggler ms-auto border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+      <i class="bi bi-list fs-2 text-dark"></i>
+    </button>
+
+    <!-- Navigation links -->
+    <div class="collapse navbar-collapse justify-content-between align-items-center" id="navbarContent">
+      <ul class="navbar-nav flex-wrap kategori-navbar">
+        <li class="nav-item"><a class="nav-link fw-medium" href="#">Home</a></li>
+           <li class="nav-item"><a class="nav-link fw-medium" href="#">Layanan</a></li>
+        <li class="nav-item"><a class="nav-link fw-bold text-primary" href="perluresep.html">Pesan Obat Dengan Resep Dokter</a></li>
+        <li class="nav-item"><a class="nav-link fw-bold text-primary" href="#producttanparesep">Pesan Obat Tanpa Resep Dokter</a></li>
+      </ul>
+
+      <!-- Banner wa ke farmasi Desktop -->
+      <div class="wa-banner-desktop d-none d-lg-block ms-lg-auto">
+        <div class="text-white bg-primary text-center rounded px-3 py-2 small d-inline-block">
+          <strong>BINGUNG MAU SOLUSI OBAT APA?</strong><br />
+          <a href="https://wa.me/6281385331107?text=Halo%20Dok%2C%20saya%20bingung%20mau%20pilih%20obat%20nih" 
+             class="text-white text-decoration-underline fw-semibold" 
+             target="_blank">
+            Klik dan tanya di WA sini ya <i class="bi bi-whatsapp"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Banner wa ke farmasi Mobile -->
+    <div class="container d-lg-none mt-2">
+      <div class="wa-banner-mobile text-white bg-primary text-center rounded py-1 px-2 small">
+        <strong>BINGUNG MAU SOLUSI OBAT APA?</strong><br />
+        <a href="https://wa.me/6281385331107?text=Halo%20Dok%2C%20saya%20bingung%20mau%20pilih%20obat%20nih" 
+           class="text-white text-decoration-underline fw-semibold" 
+           target="_blank">
+          Klik dan tanya di WA sini ya <i class="bi bi-whatsapp"></i>
+        </a>
+      </div>
+    </div>
+    
+  </div>
+</nav>
+
+<!-- End Navbar -->
 
 
   <!-- Modal Profil (Read-Only) -->
@@ -179,33 +226,54 @@
 
 
   <!-- INI MODAL CART PRODUCT YA KI -->
-  <!-- OFFCANVAS SIDEBAR: HANYA UNTUK TANPA RESEP -->
-  <div class="offcanvas offcanvas-end" tabindex="-1" id="cartSidebarTanpaResep" data-bs-scroll="true">
-    <div class="offcanvas-header border-bottom">
-      <h5 class="offcanvas-title">Keranjang Kamu</h5>
-      <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+<!-- OFFCANVAS SIDEBAR: HANYA UNTUK TANPA RESEP -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="cartSidebarTanpaResep" data-bs-scroll="true">
+  <div class="offcanvas-header border-bottom">
+    <h5 class="offcanvas-title">Keranjang Kamu</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+  </div>
+
+  <div class="offcanvas-body d-flex flex-column">
+
+    <!-- List Produk Tanpa Resep -->
+    <div id="tanpaResepList" class="flex-grow-1 overflow-auto mb-3" style="overflow-y: auto; padding-bottom: 250px;">
+      <!-- Produk tanpa resep akan di-render via JavaScript di sini -->
     </div>
 
-    <div class="offcanvas-body d-flex flex-column">
-
-      <!-- List Produk Tanpa Resep -->
-      <div id="tanpaResepList" class="flex-grow-1 overflow-auto mb-3">
-        <!-- Produk tanpa resep akan di-render via JavaScript di sini -->
+    <!-- Pembatas & Peta Lokasi -->
+    <div class="border-top pt-3">
+      <hr class="my-3">
+      <label class="form-label fw-semibold">Lokasi Anda & Rute ke Apotek</label>
+      <div id="cartMap" style="height: 250px; border-radius: 10px;"></div>
+      <div class="alert alert-warning mt-2 small">
+        Gratis Ongkir jika jarak tidak lebih dari 5 km jika lebih dihitung Rp3.000 per 1 km (dibulatkan ke atas).
+      </div>
+      <div id="cartOngkirInfo" class="mt-2 text-muted small fw-semibold">
+        Ongkir: -
       </div>
 
-
-      <!-- Summary Total Harga -->
+<!-- Summary Total Harga -->
       <div class="mt-4 border-top pt-3">
         <h5 class="fw-bold mt-2">Total: <span id="cartTotal" class="float-end">Rp0</span></h5>
-        <button id="checkoutBtn" class="btn owsit-btn w-100 mt-3">Checkout</button>
+
+        <!-- ALERT PESANAN -->
+        <div class="alert alert-info mt-3 small" role="alert">
+          Silakan checkout dan cek status dan konfirmasi pesananmu di tab <strong>Pesanan</strong> ya.
+        </div>
+
+        <button id="checkoutBtn" class="btn owsit-btn w-100 mt-2">Checkout</button>
       </div>
+
     </div>
   </div>
+</div>
+
+
 
   <!-- End Modal Tanpa Resep ki -->
 
   <!-- MODAL PERLU RESEP (SLIDE UP) -->
-  <div class="modal fade" id="modalResepDokter" tabindex="-1" aria-labelledby="modalResepDokterLabel" aria-hidden="true">
+  <!-- <div class="modal fade" id="modalResepDokter" tabindex="-1" aria-labelledby="modalResepDokterLabel" aria-hidden="true">
     <div class="modal-dialog modal-fullscreen-sm-down modal-bottom">
       <div class="modal-content rounded-top">
         
@@ -216,30 +284,28 @@
 
         <div class="modal-body">
 
-          <!-- List Produk yang Perlu Resep -->
+        
           <div id="perluResepList">
-            <!-- Produk akan muncul di sini -->
+           >
           </div>
 
-          <!-- ALERT INFO -->
+        
           <div class="alert alert-info mt-3" role="alert">
             Silakan upload resep dokter dan isi data diri untuk konfirmasi produk obat.<br>
             Tunggu admin merespon di tab <strong>Histori</strong> ya 😊
           </div>
 
-          <!-- Upload Resep -->
+        
           <div class="mt-3">
             <label for="uploadResep" class="form-label">Upload Resep Dokter</label>
             <input type="file" class="form-control" id="uploadResep" accept="image/*">
           </div>
 
-          <!-- Catatan Tambahan -->
+       
           <div class="mt-3">
             <label for="catatanResep" class="form-label">Catatan Tambahan (Opsional)</label>
             <textarea id="catatanResep" class="form-control" rows="3" placeholder="Tulis catatan tambahan di sini..."></textarea>
           </div>
-
-     
         </div>
 
    
@@ -252,65 +318,13 @@
 
       </div>
     </div>
-  </div>
+  </div> -->
   <!-- End Modal si pesan dengan resep dokter -->
 
 
 
 
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light py-2">
-    <div class="container">
 
-        <!-- Hamburger toggle button -->
-        <button class="navbar-toggler ms-auto border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
-        <i class="bi bi-list fs-2 text-dark"></i>
-        </button>
-
-        <!-- Navigation links -->
-        <div class="collapse navbar-collapse justify-content-between align-items-center" id="navbarContent">
-          <ul class="navbar-nav flex-wrap kategori-navbar">
-            <li class="nav-item"><a class="nav-link fw-medium" href="#" data-kategori="Obat Demam">Obat Demam</a></li>
-            <li class="nav-item"><a class="nav-link fw-medium" href="#" data-kategori="Obat Flu">Obat Flu</a></li>
-            <li class="nav-item"><a class="nav-link fw-medium" href="#" data-kategori="Obat Batuk">Obat Batuk</a></li>
-            <li class="nav-item"><a class="nav-link fw-medium" href="#" data-kategori="Obat Luka">Obat Luka</a></li>
-            <li class="nav-item"><a class="nav-link fw-medium" href="#" data-kategori="Obat Alergi">Obat Alergi</a></li>
-            <li class="nav-item"><a class="nav-link fw-medium" href="#" data-kategori="Vitamin">Vitamin</a></li>
-            <li class="nav-item"><a class="nav-link fw-bold text-primary" href="#" data-lihat-semua>Semua Produk</a></li>
-
-          </ul>
-
-
-        <!-- Banner wa ke farmasi Desktop -->
-        <div class="wa-banner-desktop d-none d-lg-block ms-lg-auto">
-        <div class="text-white bg-primary text-center rounded px-3 py-2 small d-inline-block">
-            <strong>BINGUNG MAU SOLUSI OBAT APA?</strong><br />
-            <a href="https://wa.me/6281385331107?text=Halo%20Dok%2C%20saya%20bingung%20mau%20pilih%20obat%20nih" 
-            class="text-white text-decoration-underline fw-semibold" 
-            target="_blank">
-            Klik dan tanya di WA sini ya <i class="bi bi-whatsapp"></i>
-            </a>
-
-        </div>
-        </div>
-    </div>
-
-    <!--  Banner wa ke farmasi Mobile -->
-    <div class="container d-lg-none mt-2">
-    <div class="container d-lg-none mt-2">
-    <div class="wa-banner-mobile text-white bg-primary text-center rounded py-1 px-2 small">
-        <strong>BINGUNG MAU SOLUSI OBAT APA?</strong><br />
-            <a href="https://wa.me/6281385331107?text=Halo%20Dok%2C%20saya%20bingung%20mau%20pilih%20obat%20nih" 
-                        class="text-white text-decoration-underline fw-semibold" 
-                        target="_blank">
-                        Klik dan tanya di WA sini ya <i class="bi bi-whatsapp"></i>
-                        </a>
-            </div>
-        </div>
-    </div>
-  </div>
-</nav>
-<!-- End Navbar -->
 
 <!-- Konten hero carosel di awal -->
 <section class="hero-section py-5">
@@ -364,9 +378,10 @@
                   <li><i class="bi bi-check-circle-fill text-success me-2"></i>Pengiriman Langsung ke Rumah</li>
                 </ul>
                 <div class="mt-4 d-flex gap-3 flex-wrap">
-                <button class="btn btn-info btn-lg" data-bs-toggle="modal" data-bs-target="#modalResepDokter">
-                  Pesan Obat dengan Resep Dokter Anda
-                </button>
+                  <a href="perluresep.html" class="btn btn-info btn-lg d-inline-block text-white text-decoration-none">
+                    Pesan Obat dengan Resep Dokter Anda
+                  </a>
+
                   <button class="btn btn-outline-light btn-lg" data-bs-target="#heroCarousel" data-bs-slide="prev">
                     ← Kembali
                   </button>
@@ -620,7 +635,7 @@
 <!-- End Populer product -->
 
 <!-- product -->
-<section class="container mt-7">
+<section id="producttanparesep" class="container mt-7">
   <!-- Garis pembatas -->
   <hr class="border-top border-2 border-secondary opacity-25 my-5" />
 
@@ -853,7 +868,7 @@
 
 
 
-
+<!-- footer -->
 <footer class="py-4 mt-5" style="background-color: #1e3a8a;">
   <div class="container text-white">
     <div class="row align-items-start">
@@ -902,6 +917,8 @@
   <script src="js/script.js"></script>
   <script src="js/cart.js"></script>
   <script src="js/kategori.js"></script>
+  <script src="js/map.js"></script>
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     
 </body>
 </html>

@@ -227,6 +227,25 @@ body {
   transform: scale(1.1);
 }
 
+
+  .custom-btnn {
+    background-color: #1e3a8a;
+    color: #f0f8ff;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+
+  .custom-btnn:hover {
+    background-color: #3b82f6; /* biru terang saat hover */
+    transform: scale(1.02);
+    color: #ffffff;
+  }
+
+  .custom-btnn:active {
+    background-color: #1d4ed8; /* lebih gelap saat ditekan */
+    transform: scale(0.98);
+  }
+
+
 .card-img-top {
   object-fit: contain;
   height: 150px;
