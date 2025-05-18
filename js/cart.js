@@ -170,3 +170,49 @@ document.addEventListener('DOMContentLoaded', () => {
   if (badge && cartCount === 0) badge.style.display = 'none';
   updateCartTotal();
 });
+
+// ✅ Tambahan: Checkout button listener
+document.getElementById('checkoutBtn').addEventListener('click', () => {
+  const pesanan = {
+    produk: cartItems.tanpa,
+    totalProduk: cartItems.tanpa.reduce((sum, item) => sum + item.qty * item.price, 0),
+    ongkir: window.cartOngkir || 0,
+    totalBayar: 0,
+  };
+
+  pesanan.totalBayar = pesanan.totalProduk + pesanan.ongkir;
+
+  localStorage.setItem('pesananTanpaResep', JSON.stringify(pesanan));
+
+  // Redirect ke halaman pesanan
+  window.location.href = 'allpesanan.html';
+});
+
+
+document.getElementById('checkoutBtn').addEventListener('click', () => {
+  const pesanan = {
+    produk: cartItems.tanpa,
+    totalProduk: cartItems.tanpa.reduce((sum, item) => sum + item.qty * item.price, 0),
+    ongkir: window.cartOngkir || 0,
+    totalBayar: 0,
+  };
+
+  pesanan.totalBayar = pesanan.totalProduk + pesanan.ongkir;
+
+  // Simpan ke localStorage
+  localStorage.setItem('pesananTanpaResep', JSON.stringify(pesanan));
+  localStorage.setItem('pesananBaru', 'true'); // Buat trigger badge merah
+
+  // Tampilkan popup sukses
+  Swal.fire({
+    icon: 'success',
+    title: 'Pesanan Berhasil!',
+    text: 'Pesanan sudah berhasil dibuat, silakan cek halaman pesanan.',
+    confirmButtonText: 'Lihat Pesanan',
+  }).then(() => {
+    // Setelah klik OK, redirect
+    window.location.href = 'allpesanan.html';
+  });
+});
+
+
